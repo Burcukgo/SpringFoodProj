@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Util {
 	
 	public static String link = "dashboard";
+	public static String clink = "order";
 	
 	public static String control(HttpServletRequest req, String page) {
 		
@@ -50,5 +51,48 @@ public class Util {
 		}
 		return null;
 	}
+	
+	
+	public static String Detailcontrol(HttpServletRequest req, String page) {
+		// cookie control
+				//if(req.getSession().getAttribute("OrderProductId") != null) 
+					
+
+		return"";
+	}
+	
+	public static String Ordercontrol(HttpServletRequest req, String page) {
+		// cookie control
+		if(req.getCookies() != null) {
+			Cookie[] arr = req.getCookies();
+			for (Cookie item : arr) {
+				if(item.getName().equals("customer_cookie")) {
+					String cid = item.getValue();
+					req.getSession().setAttribute("custid", cid);
+					break;
+				}
+			}
+		}
+		
+		boolean statu = req.getSession().getAttribute("custid") == null;
+		if(statu) {
+			return "redirect:/customerlogin";
+			
+		}else {
+			if (page.contains("redirect:")) {
+				clink = page;
+				return page;
+			}else {
+				clink = page;
+				return "/"+page;
+			}
+			
+			
+			
+		}
+	
+	}	
+	
+		
 
 }

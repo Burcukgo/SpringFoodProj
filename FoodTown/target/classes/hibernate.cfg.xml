@@ -23,6 +23,9 @@
   <property name="hibernate.current_session_context_class">thread</property>
   <property name="hibernate.hbm2ddl.auto">update</property>
   <mapping class="model.Admin"/>
+  <mapping class="model.Category"/>
+  <mapping class="model.Customer"/>
   <mapping class="model.Product"/>
+  <mapping class="model.Productorder"/>
  </session-factory>
 </hibernate-configuration>

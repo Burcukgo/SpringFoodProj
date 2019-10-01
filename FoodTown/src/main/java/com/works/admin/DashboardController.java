@@ -44,7 +44,7 @@ public class DashboardController {
 		adm.setApass(Util.MD5(adm.getApass()));
 		long start = System.currentTimeMillis();
 		System.out.println("start : " + start );
-		int id =  (int) sesi.save(adm);
+		int id =  (Integer) sesi.save(adm);
 		System.out.println("insert id : " + id);
 		tr.commit(); // işlem başarılı kayıt yap
 		long end = System.currentTimeMillis();
